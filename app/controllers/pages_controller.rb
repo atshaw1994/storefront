@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def show
+    @products = Product.all if params[:id] == 'admin'
     render params[:id]
   end
 
@@ -20,5 +21,10 @@ class PagesController < ApplicationController
 
   def about
     render :about
+  end
+
+  def admin
+    @products = Product.all
+    render :admin
   end
 end
