@@ -1,24 +1,55 @@
-# README
+# Storefront
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A demo storefront application built to showcase coding abilities using Ruby on Rails.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- Product listing
+- Shopping cart
+- User authentication
+- Order management
 
-* System dependencies
+## Requirements
 
-* Configuration
+- **Ruby**: 3.2.2
+- **Rails**: 7.1.3
+- **Node.js**: 18.x
+- **Yarn**: 1.22.x
+- **PostgreSQL**: 14.x
 
-* Database creation
+## Setup
 
-* Database initialization
+1. Clone the repository:
 
-* How to run the test suite
+   ```sh
+   git clone https://github.com/yourusername/storefront.git
+   cd storefront
+   ```
 
-* Services (job queues, cache servers, search engines, etc.)
+2. Install dependencies:
 
-* Deployment instructions
+   ```sh
+   bundle install
+   yarn install
+   ```
 
-* ...
+3. Set up the database:
+
+   ```sh
+   rails db:setup
+   ```
+
+4. Start the server:
+   ```sh
+   rails server
+   ```
+
+## Running Tests
+
+```sh
+bundle exec rspec
+```
+
+## License
+
+MIT
