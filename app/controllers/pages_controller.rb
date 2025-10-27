@@ -3,7 +3,14 @@ class PagesController < ApplicationController
   end
 
   def show
-    @products = Product.all if params[:id] == 'admin'
+    if params[:id] == 'admin'
+      @products = Product.all
+    elsif params[:id] == 'store'
+      @page = (params[:page] || 1).to_i
+      per_page = 9
+      @products = Product.offset((@page - 1) * per_page).limit(per_page)
+      @total_pages = (Product.count / per_page.to_f).ceil
+    end
     render params[:id]
   end
 
