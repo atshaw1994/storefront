@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between" style="padding: 1rem 2rem;">
+    <div class="d-flex align-items-center" style="gap: 0.5rem;">
+        <span class="material-symbols-rounded" style="margin-bottom: 7px;">store</span>
+        <h4>Storefront</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="<%= page_path('home') %>">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= page_path('store') %>">Store</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= page_path('contact') %>">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<%= page_path('about') %>">About</a>
+            </li>
+        </ul>
+    </div>
+    <div class="" id="navbarText">
+        <a class="nav-link d-flex align-items-center justify-content-center" href="<%= page_path('cart') %>" style="gap: 0.25rem;">
+            <span style="display: flex; align-items: center; justify-content: center;">0</span>
+            <span class="material-symbols-rounded" style="display: flex; align-items: center; justify-content: center;">shopping_cart</span>
+        </a>
+    </div>
+</nav>
