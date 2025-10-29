@@ -1,5 +1,13 @@
-<div class="container mt-4" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
-    <h1>Cart</h1>
+<div class="container mt-4">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 1.5rem;">
+        <h1 style="margin: 0;">Cart</h1>
+        <form action="<%= clear_cart_path %>" method="post" style="margin-top: 0.5rem;" data-turbo="false">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <button type="submit" class="btn btn-warning">
+                <span class="material-symbols-rounded">delete_sweep</span>
+            </button>
+        </form>
+    </div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem;">
     <% @cart.cart_items.includes(:product).each do |item| %>
@@ -25,7 +33,7 @@
             </div>
         </div>
     <% end %>
-    <div class="d-flex flex-column align-items-end" style="margin-top: 1rem;">
+    <div class="d-flex flex-column align-items-end" style="margin-top: 1rem; gap: 0.5rem;">
         <h6>SubTotal: $<%= sprintf('%.2f', @cart.total_price) %></h6>
         <h6>Tax: $<%= sprintf('%.2f', @cart.total_price * 0.076) %></h6>
         <h4>Total: $<%= sprintf('%.2f', @cart.total_price * 1.076) %></h4>

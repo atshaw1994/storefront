@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   post 'add_to_cart', to: 'carts#add', as: :add_to_cart
   post 'remove_one_from_cart', to: 'carts#remove_one', as: :remove_one_from_cart
   post 'remove_from_cart', to: 'carts#remove', as: :remove_from_cart
+  post 'clear_cart', to: 'carts#clear', as: :clear_cart
   post '/cleanup_user', to: 'application#cleanup_user'
 end

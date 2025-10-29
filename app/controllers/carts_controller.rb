@@ -34,6 +34,12 @@ class CartsController < ApplicationController
     redirect_to page_path('store')
   end
 
+  def clear
+    @cart = current_cart
+    @cart.cart_items.destroy_all
+    redirect_to page_path('cart'), notice: 'Cart cleared.'
+  end
+
   private
 
   def current_cart
