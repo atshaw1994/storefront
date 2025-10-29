@@ -13,6 +13,7 @@
                             <span>Quantity: <%= item.quantity %></span>
                         </div>
                     </div>
+                    
                     <form action="<%= remove_from_cart_path %>" method="post" style="margin: 0;" data-turbo="false">
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
                         <%= hidden_field_tag :product_id, item.product.id %>
@@ -24,4 +25,9 @@
             </div>
         </div>
     <% end %>
+    <div class="d-flex flex-column align-items-end" style="margin-top: 1rem;">
+        <h6>SubTotal: $<%= sprintf('%.2f', @cart.total_price) %></h6>
+        <h6>Tax: $<%= sprintf('%.2f', @cart.total_price * 0.076) %></h6>
+        <h4>Total: $<%= sprintf('%.2f', @cart.total_price * 1.076) %></h4>
+    </div>
 </div>
