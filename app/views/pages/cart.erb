@@ -1,1 +1,27 @@
-This is the cart page.
+<div class="container mt-4" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
+    <h1>Cart</h1>
+</div>
+<div style="display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem;">
+    <% @cart.cart_items.includes(:product).each do |item| %>
+        <div>
+            <div class="card h-100" style="min-width: 40vw;">
+                <div class="card-body d-flex align-items-center justify-content-between" style="gap: 1rem;">
+                    <div class="d-flex align-items-center" style="gap: 1rem;">
+                        <img src="<%= item.product.image_url %>" alt="<%= item.product.name %>" style="max-width: 48px; max-height: 48px;">
+                        <div>
+                            <strong><%= item.product.name %></strong> $<%= item.product.price %><br>
+                            <span>Quantity: <%= item.quantity %></span>
+                        </div>
+                    </div>
+                    <form action="<%= remove_from_cart_path %>" method="post" style="margin: 0;" data-turbo="false">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <%= hidden_field_tag :product_id, item.product.id %>
+                        <button type="submit" class="btn btn-danger">
+                            <span class="material-symbols-rounded">delete</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
