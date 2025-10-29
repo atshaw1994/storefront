@@ -7,7 +7,7 @@ class PagesController < ApplicationController
       @products = Product.all
     elsif params[:id] == 'store'
       @page = (params[:page] || 1).to_i
-      per_page = 9
+      per_page = 3
       @products = Product.offset((@page - 1) * per_page).limit(per_page)
       @total_pages = (Product.count / per_page.to_f).ceil
       @cart = Cart.for_session(session.id.to_s)
