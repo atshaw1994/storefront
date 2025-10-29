@@ -13,6 +13,39 @@
                             </div>
                             <p class="card-text mt-auto"><strong>$<%= product.price %></strong></p>
                         </div>
+                        <div class="card-footer">
+                                <% cart_item = @cart.cart_items.find { |item| item.product_id == product.id } if @cart %>
+                                <% if cart_item %>
+                                    <div class="d-flex align-items-center justify-content-between" style="gap: 0.5rem;">
+                                        <form action="<%= remove_one_from_cart_path %>" method="post" style="display: inline;" data-turbo="false">
+                                            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                                            <%= hidden_field_tag :product_id, product.id %>
+                                            <button type="submit" class="btn btn-outline-danger">-</button>
+                                        </form>
+                                        <span><%= cart_item.quantity %></span>
+                                        <form action="<%= add_to_cart_path %>" method="post" style="display: inline;" data-turbo="false">
+                                            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                                            <%= hidden_field_tag :product_id, product.id %>
+                                            <button type="submit" class="btn btn-outline-success">+</button>
+                                        </form>
+                                        <form action="<%= remove_from_cart_path %>" method="post" style="display: inline;" data-turbo="false">
+                                            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                                            <%= hidden_field_tag :product_id, product.id %>
+                                            <button type="submit" class="btn btn-danger ms-2">
+                                                <span class="material-symbols-rounded">delete</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                <% else %>
+                                    <form action="<%= add_to_cart_path %>" method="post" data-turbo="false">
+                                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                                        <%= hidden_field_tag :product_id, product.id %>
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <span class="material-symbols-rounded">add_shopping_cart</span>
+                                        </button>
+                                    </form>
+                                <% end %>
+                        </div>
                     </div>
                 </div>
             <% end %>

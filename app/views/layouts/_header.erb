@@ -22,7 +22,9 @@
     </div>
     <div class="" id="navbarText">
         <a class="nav-link d-flex align-items-center justify-content-center" href="<%= page_path('cart') %>" style="gap: 0.25rem;">
-            <span style="display: flex; align-items: center; justify-content: center;">0</span>
+            <span style="display: flex; align-items: center; justify-content: center;">
+                <%= @cart ? @cart.cart_items.sum(:quantity) : 0 %>
+            </span>
             <span class="material-symbols-rounded" style="display: flex; align-items: center; justify-content: center;">shopping_cart</span>
         </a>
     </div>

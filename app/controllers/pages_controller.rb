@@ -10,6 +10,7 @@ class PagesController < ApplicationController
       per_page = 9
       @products = Product.offset((@page - 1) * per_page).limit(per_page)
       @total_pages = (Product.count / per_page.to_f).ceil
+      @cart = Cart.for_session(session.id.to_s)
     end
     render params[:id]
   end
